@@ -502,7 +502,7 @@ h1{
                 </p>
 
             </a>
-<!-- GMAIL COPY BUTTON -->
+<!-- GMAIL COPY + SEND MAIL -->
 
 <div class="social-card copy-email" onclick="copyEmail()">
 
@@ -511,10 +511,26 @@ h1{
     <h2>Gmail</h2>
 
     <p id="emailText">
-        badboy234s@gmail.com
+        Click To Copy Mail
     </p>
 
 </div>
+
+<!-- SEND MAIL BUTTON -->
+
+<a href="mailto:badboy234s@gmail.com"
+class="social-card"
+target="_blank">
+
+    <img src="https://img.icons8.com/fluency/512/filled-message.png">
+
+    <h2>Send Mail</h2>
+
+    <p>
+        Send Me A Gmail Message
+    </p>
+
+</a>
 
 <script>
 
@@ -525,18 +541,17 @@ function copyEmail() {
     navigator.clipboard.writeText(email);
 
     document.getElementById("emailText").innerHTML =
-    "Copied Successfully ✓";
+    "Mail Copied ✓";
 
     setTimeout(() => {
 
         document.getElementById("emailText").innerHTML =
-        "badboy234s@gmail.com";
+        "Click To Copy Mail";
 
     }, 2000);
 }
 
 </script>
-
         <!-- FOOTER -->
 
         <div class="footer">
