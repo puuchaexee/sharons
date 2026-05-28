@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sharon Premium Connect</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#050505;
+    overflow-x:hidden;
+    color:white;
+}
+
+/* ========================= */
+/* VIDEO BACKGROUND */
+/* ========================= */
+
+.bg-video{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-5;
+    opacity:0.3;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+    z-index:-4;
+}
+
+/* ========================= */
+/* ANIMATED FLOATING BG */
+/* ========================= */
+
+.animated-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-3;
+}
+
+.animated-bg span{
+    position:absolute;
+    display:block;
+    bottom:-150px;
+    animation:animate 25s linear infinite;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(3px);
+    border-radius:50%;
+}
+
+.animated-bg span:nth-child(1){
+    left:10%;
+    width:80px;
+    height:80px;
+    animation-delay:0s;
+}
+
+.animated-bg span:nth-child(2){
+    left:25%;
+    width:30px;
+    height:30px;
+    animation-delay:2s;
+    animation-duration:12s;
+}
+
+.animated-bg span:nth-child(3){
+    left:40%;
+    width:60px;
+    height:60px;
+    animation-delay:4s;
+}
+
+.animated-bg span:nth-child(4){
+    left:55%;
+    width:100px;
+    height:100px;
+    animation-delay:0s;
+    animation-duration:18s;
+}
+
+.animated-bg span:nth-child(5){
+    left:70%;
+    width:40px;
+    height:40px;
+    animation-delay:3s;
+}
+
+.animated-bg span:nth-child(6){
+    left:85%;
+    width:110px;
+    height:110px;
+    animation-delay:5s;
+}
+
+@keyframes animate{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+        border-radius:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-1000px) rotate(720deg);
+        opacity:0;
+        border-radius:50%;
+    }
+}
+
+/* ========================= */
+/* MAIN CONTAINER */
+/* ========================= */
+
+.container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+}
+
+.main-card{
+    width:100%;
+    max-width:1200px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    border-radius:35px;
+    padding:50px;
+    box-shadow:0 0 60px rgba(0,0,0,0.5);
+}
+
+/* ========================= */
+/* PROFILE */
+/* ========================= */
+
+.top{
+    text-align:center;
+    margin-bottom:60px;
+    animation:fadeIn 1.3s ease;
+}
+
+.profile{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid rgba(255,255,255,0.2);
+    box-shadow:0 0 40px rgba(255,255,255,0.2);
+    transition:0.5s;
+}
+
+.profile:hover{
+    transform:scale(1.08) rotate(5deg);
+}
+
+h1{
+    margin-top:20px;
+    font-size:48px;
+    letter-spacing:1px;
+}
+
+.subtitle{
+    margin-top:12px;
+    color:#d4d4d4;
+    font-size:17px;
+}
+
+/* ========================= */
+/* SOCIAL GRID */
+/* ========================= */
+
+.social-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:30px;
+}
+
+.social-card{
+    position:relative;
+    overflow:hidden;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:28px;
+    padding:35px;
+    text-decoration:none;
+    color:white;
+    transition:0.4s ease;
+    transform-style:preserve-3d;
+    animation:floatCard 5s ease-in-out infinite;
+}
+
+/* LIGHT EFFECT */
+
+.social-card::after{
+    content:'';
+    position:absolute;
+    top:-120%;
+    left:-40%;
+    width:60px;
+    height:300%;
+    background:rgba(255,255,255,0.15);
+    transform:rotate(25deg);
+    transition:0.8s;
+}
+
+.social-card:hover::after{
+    left:140%;
+}
+
+/* FLOAT DELAY */
+
+.social-card:nth-child(2){
+    animation-delay:1s;
+}
+
+.social-card:nth-child(3){
+    animation-delay:2s;
+}
+
+.social-card:nth-child(4){
+    animation-delay:3s;
+}
+
+.social-card:nth-child(5){
+    animation-delay:4s;
+}
+
+.social-card:nth-child(6){
+    animation-delay:5s;
+}
+
+.social-card:hover{
+    transform:translateY(-12px) scale(1.03);
+    background:rgba(255,255,255,0.08);
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,0.1),
+    0 0 40px rgba(99,102,241,0.4),
+    0 0 80px rgba(6,182,212,0.3);
+}
+
+.social-card img{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    margin-bottom:22px;
+    transition:0.4s;
+}
+
+.social-card:hover img{
+    transform:rotate(10deg) scale(1.1);
+}
+
+.social-card h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.social-card p{
+    color:#d0d0d0;
+    line-height:1.5;
+    font-size:14px;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+.footer{
+    margin-top:60px;
+    text-align:center;
+    color:#a8a8a8;
+    font-size:14px;
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes floatCard{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:700px){
+
+    .main-card{
+        padding:30px 20px;
+    }
+
+    h1{
+        font-size:34px;
+    }
+
+    .social-card{
+        padding:28px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ========================= -->
+<!-- VIDEO BACKGROUND -->
+<!-- ========================= -->
+
+<video autoplay muted loop class="bg-video">
+    <source src="https://cdn.coverr.co/videos/coverr-gaming-room-1565561916813?download=1080p" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- ========================= -->
+<!-- ANIMATED BACKGROUND -->
+<!-- ========================= -->
+
+<div class="animated-bg">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
+
+<!-- ========================= -->
+<!-- MAIN WEBSITE -->
+<!-- ========================= -->
+
+<div class="container">
+
+    <div class="main-card">
+
+        <!-- PROFILE -->
+
+        <div class="top">
+
+            <img
+            class="profile"
+            src="https://i.imgur.com/2DhmtJ4.png"
+            alt="profile">
+
+            <h1>Sharon Shaji</h1>
+
+            <p class="subtitle">
+                Premium Personal Connect Website
+            </p>
+
+        </div>
+
+        <!-- SOCIALS -->
+
+        <div class="social-grid">
+
+            <!-- YOUTUBE -->
+
+            <a href="https://youtube.com/@GameKadha"
+            class="social-card"
+            target="_blank">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+
+                <h2>YouTube</h2>
+
+                <p>
+                    @GameKadha
+                </p>
+
+            </a>
+
+            <!-- INSTAGRAM -->
+
+            <a href="https://instagram.com/_shar._.on__"
+            class="social-card"
+            target="_blank">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+
+                <h2>Instagram</h2>
+
+                <p>
+                    @_shar._.on__
+                </p>
+
+            </a>
+
+            <!-- DISCORD -->
+
+            <a href="https://discord.com/"
+            class="social-card"
+            target="_blank">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png">
+
+                <h2>Discord</h2>
+
+                <p>
+                    ID : 1453257389091328214
+                </p>
+
+            </a>
+
+            <!-- DISCORD SERVER -->
+
+            <a href="https://discord.gg/Qg7pkXP5Gk"
+            class="social-card"
+            target="_blank">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png">
+
+                <h2>Discord Server</h2>
+
+                <p>
+                    Join My Official Community
+                </p>
+
+            </a>
+
+            <!-- SPOTIFY -->
+
+            <a href="https://open.spotify.com/user/31tb4qvk7vfdip5lrdhmcukus3gu?si=0cb7ce5acf2f4169"
+            class="social-card"
+            target="_blank">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png">
+
+                <h2>Spotify</h2>
+
+                <p>
+                    badboy234s@gmail.com
+                </p>
+
+            </a>
+
+            <!-- WHATSAPP -->
+
+            <a href="https://wa.me/919745837770"
+            class="social-card"
+            target="_blank">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+
+                <h2>WhatsApp</h2>
+
+                <p>
+                    Chat Directly With Me
+                </p>
+
+            </a>
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+            © 2026 Sharon Premium Connect • Designed By Sharon
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- 3D MOUSE EFFECT -->
+<!-- ========================= -->
+
+<script>
+
+const cards = document.querySelectorAll(".social-card");
+
+cards.forEach(card => {
+
+    card.addEventListener("mousemove", (e) => {
+
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / 14);
+        const rotateY = ((centerX - x) / 14);
+
+        card.style.transform =
+        `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform =
+        "rotateX(0deg) rotateY(0deg) scale(1)";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
